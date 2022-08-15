@@ -49,3 +49,4 @@ workflows:
       - say-hello
       - print_hello
       - print_world
+      - print_env_variable
