@@ -40,6 +40,7 @@ jobs:
       - checkout
       - run: 
           command: |
+            owners_name = Idachaba
             echo $owners_name
 
 # Invoke jobs via workflows
