@@ -47,7 +47,7 @@ jobs:
     <<: *dockerImage
     steps:
       - attach_workspace:
-          at: /tmp/dir/output.txt
+          at: ~/output.txt
       - run: cat ~/output.txt
   print_env_inbuilt_variable:
     <<: *dockerImage
