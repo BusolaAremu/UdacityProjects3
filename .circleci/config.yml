@@ -59,8 +59,6 @@ jobs:
 workflows:
   swrkflw:
     jobs:
-      - welcome/run
-      - say-hello
       - print_hello
       - print_world
       - print_env_variable
@@ -70,4 +68,4 @@ workflows:
             - save_hello_world_output
       - print_env_inbuilt_variable
 
-  
+
