@@ -50,9 +50,9 @@ jobs:
           at: ~/output.txt
       - run: cat ~/output.txt
       - run:
-        name: on error
-        command: echo "hello error"
-        when: on_fail
+          name: on error
+          command: echo "hello error"
+          when: on_fail
   print_env_inbuilt_variable:
     <<: *dockerImage
     steps: 
