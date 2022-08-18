@@ -19,39 +19,23 @@ commands:
       - run: echo ${CIRCLE_WORKFLOW_ID}
 
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run: echo Hello, World!
-
   print_hello:
-    docker: 
-      - image: circleci/node:13.8.0
+    <<: *dockerImage
     steps: 
       - checkout
       - run: echo hello
-
   print_world:
-    docker: 
-      - image: circleci/node:13.8.0
+    <<: *dockerImage
     steps: 
       - checkout
       - run: echo "world"
   print_env_variable:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *dockerImage
     steps: 
       - checkout
       - run: echo $owners_name
   save_hello_world_output:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *dockerImage
     steps:
       - checkout
       - run: echo "hello world" > ~/output.txt
@@ -60,8 +44,7 @@ jobs:
           paths:
             - output.txt
   print_output_file:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *dockerImage
     steps:
       - attach_workspace:
           at: /tmp/dir/output.txt
@@ -74,7 +57,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sworkflow:
+  swrkflw:
     jobs:
       - welcome/run
       - say-hello
@@ -86,3 +69,5 @@ workflows:
           requires:
             - save_hello_world_output
       - print_env_inbuilt_variable
+
+  
